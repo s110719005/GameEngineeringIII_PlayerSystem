@@ -12,7 +12,10 @@ public class PlayerState : StateBase
     }
     override public void OnUpdate() 
     {
-        
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            PlayerStateManager.Instance.ChangeState(PlayerStateManager.Instance.ToolState);
+        }
     }
     override public void OnExit() 
     {

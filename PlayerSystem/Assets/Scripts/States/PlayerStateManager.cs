@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public enum Direction
@@ -21,6 +22,9 @@ public class PlayerStateManager : MonoBehaviour
     [SerializeField]
     private StateBase walkState;
     public StateBase WalkState => walkState;
+    [SerializeField]
+    private StateBase toolState;
+    public StateBase ToolState => toolState;
     
     private Direction currentDirection;
     public Direction CurrentDirection => currentDirection;
@@ -33,7 +37,13 @@ public class PlayerStateManager : MonoBehaviour
     public GameObject PlayerVisual => playerVisual;
     [SerializeField]
     private Animator animator;
+    [SerializeField]
+    private GameObject selectionUI;
     // Start is called before the first frame update
+    private int playerGridX;
+    private int playerGridY;
+    private int selectionGridX;
+    private int selectionGridY;
 
     void Awake()
     {
@@ -57,6 +67,33 @@ public class PlayerStateManager : MonoBehaviour
     void Update()
     {
         currentState.OnUpdate();
+        playerGridX = (int)(player.transform.position.x);
+        playerGridY = (int)(player.transform.position.y);
+        switch(CurrentDirection)
+        {
+            case Direction.Down:
+                selectionGridX = playerGridX;
+                selectionGridY = playerGridY - 1;
+                break;
+            case Direction.Top:
+                selectionGridX = playerGridX;
+                selectionGridY = playerGridY + 1;
+                break;
+            case Direction.Left:
+                selectionGridX = playerGridX - 1;
+                selectionGridY = playerGridY;
+                break;
+            case Direction.Right:
+                selectionGridX = playerGridX + 1;
+                selectionGridY = playerGridY;
+                break;
+            default:
+                selectionGridX = playerGridX;
+                selectionGridY = playerGridY;
+                break;
+        }
+        selectionUI.transform.position = new Vector2(selectionGridX, selectionGridY);
+
     }
 
     public void ChangeState(StateBase nextState)
