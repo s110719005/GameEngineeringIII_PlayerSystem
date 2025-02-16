@@ -9,14 +9,31 @@ public class ToolState : PlayerState
     {
         Debug.Log("ENTER: TOOL");
         base.OnEnter();
+        string animationName;
+        animationName = ToolManager.Instance.UseTool();
+        switch(PlayerStateManager.Instance.CurrentDirection)
+        {
+            case Direction.Down:
+                PlayerStateManager.Instance.SetAnimation(animationName + "Down");
+                break;
+            case Direction.Top:
+                PlayerStateManager.Instance.SetAnimation(animationName + "Top");
+                break;
+            case Direction.Left:
+                PlayerStateManager.Instance.SetAnimation(animationName + "Left");
+                break;
+            case Direction.Right:
+                PlayerStateManager.Instance.SetAnimation(animationName + "Right");
+                break;
+            default:
+                PlayerStateManager.Instance.SetAnimation(animationName + "Down");
+                break;
+        }
     }
     override public void OnUpdate() 
     {
         if(isStart) { return; }
         base.OnUpdate();
-        string name;
-        name = ToolManager.Instance.UseTool();
-        Debug.Log("TOOL STATE: " + name);
         StartCoroutine(ToolDelay());
     }
     override public void OnExit() 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class ToolBase : MonoBehaviour
 {
@@ -27,4 +28,21 @@ public class ToolBase : MonoBehaviour
     {
         
     }
+
+    public void SetTileSprite(Tilemap tilemap, TileBase tileBase)
+    {
+        Vector3Int currentSelection = new Vector3Int(PlayerStateManager.Instance.SelectionGridX, PlayerStateManager.Instance.SelectionGridY - 1, 0);
+        if(!tilemap.HasTile(currentSelection)) { return; }
+        tilemap.SetTileFlags(currentSelection, TileFlags.None);
+        tilemap.SetTile(currentSelection, tileBase);
+    }
+    
+    public void SetTileColor(Tilemap tilemap, Color color)
+    {
+        Vector3Int currentSelection = new Vector3Int(PlayerStateManager.Instance.SelectionGridX, PlayerStateManager.Instance.SelectionGridY - 1, 0);
+        if(!tilemap.HasTile(currentSelection)) { return; }
+        Debug.Log("SET COLOR");
+        tilemap.SetTileFlags(currentSelection, TileFlags.None);
+        tilemap.SetColor(currentSelection, color);
+    }    
 }

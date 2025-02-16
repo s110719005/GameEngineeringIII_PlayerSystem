@@ -14,6 +14,7 @@ public enum Direction
 public class PlayerStateManager : MonoBehaviour
 {
     public static PlayerStateManager Instance;
+    [Header("Player State")]
     [SerializeField]
     private StateBase initialState;
     [SerializeField]
@@ -29,6 +30,7 @@ public class PlayerStateManager : MonoBehaviour
     private Direction currentDirection;
     public Direction CurrentDirection => currentDirection;
     private StateBase currentState;
+    [Header("Player")]
     [SerializeField]
     private GameObject player;
     public GameObject Player => player;
@@ -44,6 +46,8 @@ public class PlayerStateManager : MonoBehaviour
     private int playerGridY;
     private int selectionGridX;
     private int selectionGridY;
+    public int SelectionGridX => selectionGridX;
+    public int SelectionGridY => selectionGridY;
 
     void Awake()
     {
