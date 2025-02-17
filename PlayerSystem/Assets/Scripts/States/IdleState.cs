@@ -29,6 +29,8 @@ public class IdleState : PlayerState
     }
     override public void OnUpdate() 
     {
+        base.OnUpdate();
+        
         if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) ||Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
         {
             PlayerStateManager.Instance.ChangeState(PlayerStateManager.Instance.WalkState);

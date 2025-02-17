@@ -8,12 +8,15 @@ public class WalkState : PlayerState
     private float playerSpeed = 4;
     override public void OnEnter() 
     {
+        base.OnEnter();
         Debug.Log("ENTER: WALK");
         PlayerStateManager.Instance.SetAnimation("WalkDown");
 
     }
     override public void OnUpdate() 
     {
+        base.OnUpdate();
+        
         if(Input.GetKey(KeyCode.W))
         {
             PlayerStateManager.Instance.Player.transform.position += new Vector3(0, playerSpeed * Time.deltaTime, 0);

@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerManager : MonoBehaviour
 {
-    [SerializeField]
-    private float playerSpeed = 1;
     // Start is called before the first frame update
     void Start()
     {
