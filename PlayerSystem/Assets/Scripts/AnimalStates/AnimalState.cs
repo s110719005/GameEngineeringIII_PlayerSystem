@@ -2,19 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerState : StateBase
+public class AnimalState : StateBase
 {
-    
+    [SerializeField]protected AnimalStateManager animalStateManager;
     override public void OnEnter() 
     {
 
     }
     override public void OnUpdate() 
     {
-        if(Input.GetKeyDown(KeyCode.F))
-        {
-            PlayerStateManager.Instance.ChangeState(PlayerStateManager.Instance.ToolState);
-        }
+
     }
     override public void OnExit() 
     {

@@ -2,22 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerState : StateBase
+public class EmptyState : AnimalState
 {
-    
+   
     override public void OnEnter() 
     {
-
+        base.OnEnter();
     }
     override public void OnUpdate() 
     {
-        if(Input.GetKeyDown(KeyCode.F))
-        {
-            PlayerStateManager.Instance.ChangeState(PlayerStateManager.Instance.ToolState);
-        }
+        base.OnUpdate();
     }
     override public void OnExit() 
     {
-        
+        base.OnExit();
     }
 }
