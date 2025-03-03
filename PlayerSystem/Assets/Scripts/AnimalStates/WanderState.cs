@@ -15,6 +15,8 @@ public class WanderState : AnimalState
         Debug.Log("ENTER WANDER");
         randomX = UnityEngine.Random.Range(-3,3);
         randomY = UnityEngine.Random.Range(-3,3);
+        if(randomX == 0) { randomX = 1;}
+        if(randomY == 0) { randomY = 1;}
         if(walkCoroutine != null)
         {
             StopCoroutine(walkCoroutine);

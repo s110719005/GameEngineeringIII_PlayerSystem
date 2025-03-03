@@ -16,7 +16,13 @@ public class AnimalStateManager : MonoBehaviour
     public AnimalState SearchState => searchState;
     [SerializeField] private AnimalState eatState;
     public AnimalState EatState => eatState;
+    [SerializeField] private AnimalState chaseState;
+    public AnimalState ChaseState => chaseState;
+    [SerializeField] private AnimalState attackState;
+    public AnimalState AttackState => attackState;
     // Start is called before the first frame update
+    [SerializeField] private List<AnimalStateManager> mouse;
+    public List<AnimalStateManager> Mouse => mouse;
     void Start()
     {
         currentAnimalState = initialState;
@@ -24,12 +30,12 @@ public class AnimalStateManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
-        currentAnimalState.OnUpdate();
+        OnUpdate();
     }
 
-    public void OnUpdate()
+    public virtual void OnUpdate()
     {
         currentAnimalState.OnUpdate();
     }
