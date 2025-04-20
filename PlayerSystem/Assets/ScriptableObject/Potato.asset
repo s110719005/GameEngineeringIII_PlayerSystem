@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2609c2aaddc5442408ac63f714fd5a47, type: 3}
+  m_Name: Potato
+  m_EditorClassIdentifier: 
+  cropName: Potato
+  seedSprite: {fileID: 780723739, guid: 74cdfa1949faab940b36287b1a111a91, type: 3}
+  growingSprites:
+  - {fileID: 310340463, guid: 74cdfa1949faab940b36287b1a111a91, type: 3}
+  - {fileID: 216524988, guid: 74cdfa1949faab940b36287b1a111a91, type: 3}
+  - {fileID: -199936731, guid: 74cdfa1949faab940b36287b1a111a91, type: 3}
+  - {fileID: 1293845793, guid: 74cdfa1949faab940b36287b1a111a91, type: 3}
+  - {fileID: -814590816, guid: 74cdfa1949faab940b36287b1a111a91, type: 3}
+  - {fileID: 1722180186, guid: 74cdfa1949faab940b36287b1a111a91, type: 3}
+  - {fileID: 1099149544, guid: 74cdfa1949faab940b36287b1a111a91, type: 3}
+  harvestSprite: {fileID: 341202480, guid: 74cdfa1949faab940b36287b1a111a91, type: 3}
+  shopSprite: {fileID: -42478513, guid: 74cdfa1949faab940b36287b1a111a91, type: 3}
+  growingTime: 5
+  seedPrice: 5
+  harvestPrice: 15
