@@ -53,6 +53,15 @@ public class CropManager : MonoBehaviour
         }
     }
 
+    public bool IsPlanting()
+    {
+        if(cropSpotsDict.TryGetValue(PlayerStateManager.Instance.CurrenSelection, out CropSpot cropSpot))
+        {
+            return true;
+        }
+        return false;
+    }
+
     public void AddCropSpot()
     {
         Vector3Int currentSelection = PlayerStateManager.Instance.CurrenSelection;

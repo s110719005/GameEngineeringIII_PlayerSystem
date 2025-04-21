@@ -23,6 +23,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bd2f32fac27710c43bff575a6cccf9ec, type: 2}
   harvestSprite: {fileID: 341202480, guid: 74cdfa1949faab940b36287b1a111a91, type: 3}
   shopSprite: {fileID: -42478513, guid: 74cdfa1949faab940b36287b1a111a91, type: 3}
-  growingTime: 5
+  growingTime: 2
   seedPrice: 5
   harvestPrice: 15
+  unlockPrice: 100

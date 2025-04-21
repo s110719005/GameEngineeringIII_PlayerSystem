@@ -12,8 +12,11 @@ public class ShopItemUI : MonoBehaviour
     [SerializeField] private Image itemImage;
     [SerializeField] private TextMeshProUGUI priceText;
     [SerializeField] private TextMeshProUGUI sellPriceText;
+    [SerializeField] private TextMeshProUGUI unlockPriceText;
     [SerializeField] private TextMeshProUGUI cropNameText;
     [SerializeField] private TextMeshProUGUI cropInbagText;
+    [SerializeField] private GameObject lockPanel;
+    private bool isUnlock = false;
     //[SerializeField] private Button purchaseButton;
     // Start is called before the first frame update
     void Start()
@@ -31,6 +34,7 @@ public class ShopItemUI : MonoBehaviour
             if(harvest.crop == crop)
             {
                 cropInbagText.text = "In bag : " + harvest.count.ToString();
+                Debug.Log("UPDATE SHOP");
             }
         }
     }
@@ -40,6 +44,14 @@ public class ShopItemUI : MonoBehaviour
     {
         
     }
+    public void Unlock()
+    {
+        if(InventoryManager.Instance.Unlock(crop.unlockPrice))
+        {
+            lockPanel.SetActive(false);
+            isUnlock = true;
+        }
+    }
 
     public void SetupCrop()
     {
@@ -47,6 +59,7 @@ public class ShopItemUI : MonoBehaviour
         priceText.text = "X " + crop.seedPrice.ToString();
         cropNameText.text = crop.name;
         sellPriceText.text = "X " + crop.harvestPrice.ToString();
+        unlockPriceText.text = "X " + crop.unlockPrice.ToString();
     }
 
     public void Purchase()

@@ -17,6 +17,7 @@ public class CropType : ScriptableObject
     public float growingTime;
     public int seedPrice;
     public int harvestPrice;
+    public int unlockPrice;
 
 }
 

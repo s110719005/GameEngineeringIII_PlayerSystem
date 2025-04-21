@@ -9,7 +9,7 @@ public class WalkState : PlayerState
     override public void OnEnter() 
     {
         base.OnEnter();
-        Debug.Log("ENTER: WALK");
+        //Debug.Log("ENTER: WALK");
         PlayerStateManager.Instance.SetAnimation("WalkDown");
 
     }

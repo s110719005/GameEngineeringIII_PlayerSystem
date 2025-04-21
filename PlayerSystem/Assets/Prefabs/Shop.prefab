@@ -699,6 +699,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3423079866451352887}
     m_Modifications:
+    - target: {fileID: 1662298606843106706, guid: 7ad182bd40a10fa47946b66f2b5f414c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2442432012242568201, guid: 7ad182bd40a10fa47946b66f2b5f414c, type: 3}
       propertyPath: m_Name
       value: SeedPurchase

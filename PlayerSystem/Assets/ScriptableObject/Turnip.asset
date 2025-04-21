@@ -26,3 +26,4 @@ MonoBehaviour:
   growingTime: 20
   seedPrice: 20
   harvestPrice: 50
+  unlockPrice: 200

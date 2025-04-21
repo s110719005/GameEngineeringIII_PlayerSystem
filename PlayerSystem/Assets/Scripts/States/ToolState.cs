@@ -7,7 +7,7 @@ public class ToolState : PlayerState
     private bool isStart = false;
     override public void OnEnter() 
     {
-        Debug.Log("ENTER: TOOL");
+        //Debug.Log("ENTER: TOOL");
         base.OnEnter();
         string animationName;
         animationName = ToolManager.Instance.UseTool();

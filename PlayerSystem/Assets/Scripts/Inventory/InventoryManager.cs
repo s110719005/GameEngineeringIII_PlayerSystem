@@ -25,8 +25,8 @@ public class InventoryManager : MonoBehaviour
     private int currentSelectionIndex = 0;
     
     //Debug
-    [SerializeField] private CropType strawberry;
-    private Seed strawberrySeeds;
+    [SerializeField] private CropType startCrop;
+    private Seed startSeeds;
 
     public delegate void OnItemChange(Item item);
     public static OnItemChange OnAddItem;
@@ -103,16 +103,19 @@ public class InventoryManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        strawberrySeeds = new Seed();
-        strawberrySeeds.crop = strawberry;
-        strawberrySeeds.count = 5;
-        strawberrySeeds.sprite = strawberry.seedSprite;
-        AddItem(strawberrySeeds);
-        money = 500;
+        startSeeds = new Seed();
+        startSeeds.crop = startCrop;
+        startSeeds.count = 5;
+        startSeeds.sprite = startCrop.seedSprite;
+        AddItem(startSeeds);
+        money = 50;
         moneyText.text = money.ToString();
         //items.Add(strawberrySeeds);
         currentSelection = itemUis[currentSelectionIndex];
         currentSelection.Select();
+
+        shopCanvas.SetActive(true);
+        shopCanvas.SetActive(false);
 
     }
 
@@ -164,13 +167,12 @@ public class InventoryManager : MonoBehaviour
         //debug
         if(Input.GetKeyDown(KeyCode.O))
         {
-            RemoveItem(strawberrySeeds);
+            RemoveItem(startSeeds);
         }
     }
 
     private void ExecuteSelection()
     {
-        Debug.Log("Try use seed");
         if(items.Count < currentSelectionIndex) { return;}
         if(items.Count <= 0) { return;}
         if(items[currentSelectionIndex] is Seed)
@@ -200,5 +202,16 @@ public class InventoryManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public bool Unlock(int unlockPrice)
+    {
+        if(money >= unlockPrice)
+        {
+            money -= unlockPrice;
+            moneyText.text = money.ToString();
+            return true;
+        }
+        return false;
     }
 }
