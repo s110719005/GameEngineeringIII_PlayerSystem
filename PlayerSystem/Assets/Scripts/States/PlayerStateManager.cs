@@ -48,6 +48,8 @@ public class PlayerStateManager : MonoBehaviour
     private int selectionGridY;
     public int SelectionGridX => selectionGridX;
     public int SelectionGridY => selectionGridY;
+    public Vector3Int CurrenSelection => new Vector3Int(PlayerStateManager.Instance.SelectionGridX, PlayerStateManager.Instance.SelectionGridY - 1, 0);
+
 
     void Awake()
     {

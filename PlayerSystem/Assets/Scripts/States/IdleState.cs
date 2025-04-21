@@ -6,7 +6,7 @@ public class IdleState : PlayerState
 {
     override public void OnEnter() 
     {
-        Debug.Log("ENTER: IDLE");
+        //Debug.Log("ENTER: IDLE");
         base.OnEnter();
         switch(PlayerStateManager.Instance.CurrentDirection)
         {

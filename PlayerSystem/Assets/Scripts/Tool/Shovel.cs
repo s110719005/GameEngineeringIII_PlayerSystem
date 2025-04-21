@@ -6,11 +6,17 @@ using UnityEngine.Tilemaps;
 public class Shovel : ToolBase
 {
     [SerializeField]
-    private Tilemap holeTilemap;
+    private Tilemap cropTilemap;
+    [SerializeField]
+    private Tilemap farmGroundTilemap;
     [SerializeField]
     private TileBase holeTileBase;
     public override void Execute() 
     {
-        SetTileSprite(holeTilemap, holeTileBase);
+        if(CropManager.Instance.IsPlanting()) { return; }
+        if(SetTileSprite(farmGroundTilemap, cropTilemap, holeTileBase))
+        {
+            CropManager.Instance.AddCropSpot();
+        }
     }
 }

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2609c2aaddc5442408ac63f714fd5a47, type: 3}
+  m_Name: Onion
+  m_EditorClassIdentifier: 
+  cropName: Onion
+  seedSprite: {fileID: 144108498, guid: 74cdfa1949faab940b36287b1a111a91, type: 3}
+  growingTileBases:
+  - {fileID: 11400000, guid: 3e8a2016c1c009e4f826fb7c29b2f6ca, type: 2}
+  - {fileID: 11400000, guid: 17daf558c1892c2409aa5c3a96f7226b, type: 2}
+  - {fileID: 11400000, guid: 16644f437296a824887403508dcf7ea2, type: 2}
+  - {fileID: 11400000, guid: 7bdcfde44919d3a40975a0d3caad7fdd, type: 2}
+  - {fileID: 11400000, guid: 4a4db8070a796fe469943f4f394bc90e, type: 2}
+  - {fileID: 11400000, guid: 516bfa700a3eadc4190edc2c5dc0e8a6, type: 2}
+  harvestSprite: {fileID: 212467970, guid: 74cdfa1949faab940b36287b1a111a91, type: 3}
+  shopSprite: {fileID: -952952134, guid: 74cdfa1949faab940b36287b1a111a91, type: 3}
+  growingTime: 10
+  seedPrice: 10
+  harvestPrice: 30
+  unlockPrice: 100

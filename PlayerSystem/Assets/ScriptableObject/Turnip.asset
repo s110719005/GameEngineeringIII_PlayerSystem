@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2609c2aaddc5442408ac63f714fd5a47, type: 3}
+  m_Name: Turnip
+  m_EditorClassIdentifier: 
+  cropName: Turnip
+  seedSprite: {fileID: -470987245, guid: 74cdfa1949faab940b36287b1a111a91, type: 3}
+  growingTileBases:
+  - {fileID: 11400000, guid: 3256284de0dc750448f136beb52fcf76, type: 2}
+  - {fileID: 11400000, guid: e51b6ec4cc6ee1041921f80997ad7105, type: 2}
+  - {fileID: 11400000, guid: df256e652d77efe40957f7870cced3cc, type: 2}
+  - {fileID: 11400000, guid: 759b65c59851e094f93d5756fecf1d36, type: 2}
+  - {fileID: 11400000, guid: 703afa714c0e2414ba2acdcdd0e7f14e, type: 2}
+  - {fileID: 11400000, guid: 223d706db74482c419d836baf461ff0c, type: 2}
+  harvestSprite: {fileID: -2116433233, guid: 74cdfa1949faab940b36287b1a111a91, type: 3}
+  shopSprite: {fileID: 818188544, guid: 74cdfa1949faab940b36287b1a111a91, type: 3}
+  growingTime: 20
+  seedPrice: 20
+  harvestPrice: 50
+  unlockPrice: 200
