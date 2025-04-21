@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class ShopItemUI : MonoBehaviour
 {
-    [SerializeField] private Crop crop;
+    [SerializeField] private CropType crop;
     [SerializeField] private Image itemImage;
     [SerializeField] private TextMeshProUGUI priceText;
     [SerializeField] private TextMeshProUGUI cropNameText;

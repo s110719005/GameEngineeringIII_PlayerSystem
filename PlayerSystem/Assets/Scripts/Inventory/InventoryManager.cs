@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 
 
@@ -15,25 +17,37 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private GameObject shopCanvas;
     [SerializeField] TextMeshProUGUI moneyText;
 
+
+
     private int money;
+
+    private ItemUI currentSelection;
+    private int currentSelectionIndex = 0;
     
     //Debug
-    [SerializeField] private Crop strawberry;
-    private Item strawberrySeeds;
+    [SerializeField] private CropType strawberry;
+    private Seed strawberrySeeds;
     
-    public void PurchaseItem(Crop crop)
+    public void PurchaseItem(CropType cropType)
     {
-        if(money >= crop.seedPrice)
+        if(money >= cropType.seedPrice)
         {
-            money -= crop.seedPrice;
+            money -= cropType.seedPrice;
             moneyText.text = money.ToString();
 
-            Item seed = new Item();
-            //seed.crop = crop;
-            seed.count = 1;
-            seed.sprite = crop.seedSprite;
+            Seed seed = new Seed
+            {
+                crop = cropType,
+                count = 1,
+                sprite = cropType.seedSprite,
+            };
             AddItem(seed);
         }
+    }
+
+    public void PickUpHarvest()
+    {
+
     }
     public void AddItem(Item item)
     {
@@ -48,15 +62,6 @@ public class InventoryManager : MonoBehaviour
         }
         items.Add(item);
         UpdateUI();
-        // if(items.Contains(item))
-        // {
-        //     items[items.IndexOf(item)].count += item.count;
-        // }
-        // else
-        // {
-        //     items.Add(item);
-        // }
-        // UpdateUI();
     }
 
     public void RemoveItem(Item item)
@@ -76,20 +81,6 @@ public class InventoryManager : MonoBehaviour
             items.RemoveAt(removeIndex);
         }
         UpdateUI();
-
-
-        // if(items.Contains(item))
-        // {
-        //     if(items[items.IndexOf(item)].count > 0)
-        //     {
-        //         items[items.IndexOf(item)].count -= 1;
-        //         if(items[items.IndexOf(item)].count == 0)
-        //         {
-        //             items.RemoveAt(items.IndexOf(item));
-        //         }
-        //     }
-        //     UpdateUI();
-        // }
     }
     private void Awake() 
     {
@@ -105,14 +96,16 @@ public class InventoryManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        strawberrySeeds = new Item();
-        //strawberrySeeds.crop = strawberry;
+        strawberrySeeds = new Seed();
+        strawberrySeeds.crop = strawberry;
         strawberrySeeds.count = 5;
         strawberrySeeds.sprite = strawberry.seedSprite;
         AddItem(strawberrySeeds);
         money = 500;
         moneyText.text = money.ToString();
         //items.Add(strawberrySeeds);
+        currentSelection = itemUis[currentSelectionIndex];
+        currentSelection.Select();
 
     }
 
@@ -136,13 +129,51 @@ public class InventoryManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            shopCanvas.SetActive(!shopCanvas.activeSelf);
+        }
+        if(Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            currentSelection.Deselect();
+            currentSelectionIndex --;
+            if(currentSelectionIndex < 0) { currentSelectionIndex = itemUis.Count - 1; }
+            currentSelection = itemUis[currentSelectionIndex];
+            currentSelection.Select();
+        }
+        if(Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            currentSelection.Deselect();
+            currentSelectionIndex ++;
+            if(currentSelectionIndex >= itemUis.Count) { currentSelectionIndex = 0; }
+            currentSelection = itemUis[currentSelectionIndex];
+            currentSelection.Select();
+        }
+        if(Input.GetKeyDown(KeyCode.K))
+        {
+            ExecuteSelection();
+        }
+
+        //debug
         if(Input.GetKeyDown(KeyCode.O))
         {
             RemoveItem(strawberrySeeds);
         }
-        if(Input.GetKeyDown(KeyCode.P))
+    }
+
+    private void ExecuteSelection()
+    {
+        Debug.Log("Try use seed");
+        if(items.Count < currentSelectionIndex) { return;}
+        if(items.Count <= 0) { return;}
+        if(items[currentSelectionIndex] is Seed)
         {
-            shopCanvas.SetActive(!shopCanvas.activeSelf);
+            Seed seed = items[currentSelectionIndex] as Seed;
+            Vector3Int currentSelection = new Vector3Int(PlayerStateManager.Instance.SelectionGridX, PlayerStateManager.Instance.SelectionGridY - 1, 0);
+            if(CropManager.Instance.PlantCrop(currentSelection, seed.crop))
+            {
+                RemoveItem(seed);
+            }
         }
     }
 }

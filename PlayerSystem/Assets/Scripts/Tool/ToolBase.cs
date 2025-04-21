@@ -29,12 +29,23 @@ public class ToolBase : MonoBehaviour
         
     }
 
-    public void SetTileSprite(Tilemap tilemap, TileBase tileBase)
+    public bool SetTileSprite(Tilemap tilemap, TileBase tileBase)
     {
         Vector3Int currentSelection = new Vector3Int(PlayerStateManager.Instance.SelectionGridX, PlayerStateManager.Instance.SelectionGridY - 1, 0);
-        if(!tilemap.HasTile(currentSelection)) { return; }
+        if(!tilemap.HasTile(currentSelection)) { return false; }
         tilemap.SetTileFlags(currentSelection, TileFlags.None);
         tilemap.SetTile(currentSelection, tileBase);
+        return true;
+    }
+
+    public bool SetTileSprite(Tilemap tilemapCheck, Tilemap tilemapEdit, TileBase tileBase)
+    {
+        Vector3Int currentSelection = new Vector3Int(PlayerStateManager.Instance.SelectionGridX, PlayerStateManager.Instance.SelectionGridY - 1, 0);
+        if(!tilemapCheck.HasTile(currentSelection)) { return false; }
+        if(tilemapEdit.GetTile(currentSelection) == tileBase) { return false;}
+        tilemapEdit.SetTileFlags(currentSelection, TileFlags.None);
+        tilemapEdit.SetTile(currentSelection, tileBase);
+        return true;
     }
     
     public void SetTileColor(Tilemap tilemap, Color color)
