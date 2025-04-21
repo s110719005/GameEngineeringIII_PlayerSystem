@@ -9,6 +9,7 @@ public class Axe : ToolBase
     private Tilemap grassTilemap;
     public override void Execute() 
     {
-        SetTileSprite(grassTilemap, null);
+        CropManager.Instance.Harvest(PlayerStateManager.Instance.CurrenSelection);
+        //SetTileSprite(grassTilemap, null);
     }
 }

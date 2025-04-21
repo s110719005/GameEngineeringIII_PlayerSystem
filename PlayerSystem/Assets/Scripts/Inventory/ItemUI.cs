@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class ItemUI : MonoBehaviour
 {
     [SerializeField] private Sprite defaultSprite;
+    [SerializeField] private Image backgroundImage;
     [SerializeField] private Image itemImage;
     [SerializeField] private TextMeshProUGUI itemCountText;
 
@@ -23,5 +24,14 @@ public class ItemUI : MonoBehaviour
         itemImage.sprite = defaultSprite;
         itemImage.color = new Color(255, 255, 255, 0);
         itemCountText.text = "";
+    }
+
+    public void Select()
+    {
+        backgroundImage.color = new Color(0.8f, 0.8f, 0.8f);
+    }
+    public void Deselect()
+    {
+        backgroundImage.color = new Color(1, 1, 1);
     }
 }

@@ -13,14 +13,14 @@ public class Item
     
 }
 
-// [System.Serializable]
-// public class Seed : Item
-// {
-//     public Crop crop;
-// }
+[System.Serializable]
+public class Seed : Item
+{
+    public CropType crop;
+}
 
-// [System.Serializable]
-// public class Harvest : Item
-// {
-//     public Crop crop;
-// }
+[System.Serializable]
+public class Harvest : Item
+{
+    public CropType crop;
+}

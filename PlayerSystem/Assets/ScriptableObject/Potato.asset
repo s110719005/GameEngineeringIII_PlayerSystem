@@ -14,14 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cropName: Potato
   seedSprite: {fileID: 780723739, guid: 74cdfa1949faab940b36287b1a111a91, type: 3}
-  growingSprites:
-  - {fileID: 310340463, guid: 74cdfa1949faab940b36287b1a111a91, type: 3}
-  - {fileID: 216524988, guid: 74cdfa1949faab940b36287b1a111a91, type: 3}
-  - {fileID: -199936731, guid: 74cdfa1949faab940b36287b1a111a91, type: 3}
-  - {fileID: 1293845793, guid: 74cdfa1949faab940b36287b1a111a91, type: 3}
-  - {fileID: -814590816, guid: 74cdfa1949faab940b36287b1a111a91, type: 3}
-  - {fileID: 1722180186, guid: 74cdfa1949faab940b36287b1a111a91, type: 3}
-  - {fileID: 1099149544, guid: 74cdfa1949faab940b36287b1a111a91, type: 3}
+  growingTileBases:
+  - {fileID: 11400000, guid: c616baf8d5d500f469e1efd346d9963f, type: 2}
+  - {fileID: 11400000, guid: 6e311224f6c099a48a25e585c4e55bf3, type: 2}
+  - {fileID: 11400000, guid: 40a50407d03eba840ad0e908a8c27d9a, type: 2}
+  - {fileID: 11400000, guid: e727e23e5bc4d6842a14a69cde045902, type: 2}
+  - {fileID: 11400000, guid: b67485eade41f5b46814146f5f5a544d, type: 2}
+  - {fileID: 11400000, guid: bd2f32fac27710c43bff575a6cccf9ec, type: 2}
   harvestSprite: {fileID: 341202480, guid: 74cdfa1949faab940b36287b1a111a91, type: 3}
   shopSprite: {fileID: -42478513, guid: 74cdfa1949faab940b36287b1a111a91, type: 3}
   growingTime: 5
