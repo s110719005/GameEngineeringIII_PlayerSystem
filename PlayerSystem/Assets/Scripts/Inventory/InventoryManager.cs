@@ -27,6 +27,10 @@ public class InventoryManager : MonoBehaviour
     //Debug
     [SerializeField] private CropType strawberry;
     private Seed strawberrySeeds;
+
+    public delegate void OnItemChange(Item item);
+    public static OnItemChange OnAddItem;
+    public static OnItemChange OnRemoveItem;
     
     public void PurchaseItem(CropType cropType)
     {
@@ -57,10 +61,12 @@ public class InventoryManager : MonoBehaviour
             {
                 items[i].count += item.count;
                 UpdateUI();
+                OnAddItem?.Invoke(items[i]);
                 return;
             }
         }
         items.Add(item);
+        OnAddItem?.Invoke(item);
         UpdateUI();
     }
 
@@ -72,6 +78,7 @@ public class InventoryManager : MonoBehaviour
             if(items[i].sprite == item.sprite)
             {
                 items[i].count -= 1;
+                OnRemoveItem?.Invoke(items[i]);
                 if(items[i].count <= 0) { removeIndex = i;}
                 break;
             }
@@ -173,6 +180,24 @@ public class InventoryManager : MonoBehaviour
             if(CropManager.Instance.PlantCrop(currentSelection, seed.crop))
             {
                 RemoveItem(seed);
+            }
+        }
+    }
+
+    public void SellItem(CropType crop)
+    {
+        foreach (var item in items)
+        {
+            if(item is Harvest)
+            {
+                Harvest harvest = item as Harvest;
+                if(harvest.crop == crop)
+                {
+                    RemoveItem(harvest);
+                    money += harvest.crop.harvestPrice;
+                    moneyText.text = money.ToString();
+                    return;
+                }
             }
         }
     }

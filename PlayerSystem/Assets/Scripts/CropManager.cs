@@ -93,6 +93,7 @@ public class CropManager : MonoBehaviour
         Debug.Log("Try plant");
         if(cropSpotsDict.TryGetValue(currentSelection, out CropSpot cropSpot))
         {
+            if(cropSpot.isPlant) { return false; }
             cropSpot.isPlant = true;
             cropSpot.cropType = cropType;
             cropTilemap.SetTileFlags(cropSpot.grid, TileFlags.None);

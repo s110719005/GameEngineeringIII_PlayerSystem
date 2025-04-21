@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -10,12 +11,28 @@ public class ShopItemUI : MonoBehaviour
     [SerializeField] private CropType crop;
     [SerializeField] private Image itemImage;
     [SerializeField] private TextMeshProUGUI priceText;
+    [SerializeField] private TextMeshProUGUI sellPriceText;
     [SerializeField] private TextMeshProUGUI cropNameText;
+    [SerializeField] private TextMeshProUGUI cropInbagText;
     //[SerializeField] private Button purchaseButton;
     // Start is called before the first frame update
     void Start()
     {
         SetupCrop();
+        InventoryManager.OnAddItem += OnUpdateItem;
+        InventoryManager.OnRemoveItem += OnUpdateItem;
+    }
+
+    private void OnUpdateItem(Item item)
+    {
+        if(item is Harvest)
+        {
+            Harvest harvest = item as Harvest;
+            if(harvest.crop == crop)
+            {
+                cropInbagText.text = "In bag : " + harvest.count.ToString();
+            }
+        }
     }
 
     // Update is called once per frame
@@ -29,10 +46,16 @@ public class ShopItemUI : MonoBehaviour
         itemImage.sprite = crop.shopSprite;
         priceText.text = "X " + crop.seedPrice.ToString();
         cropNameText.text = crop.name;
+        sellPriceText.text = "X " + crop.harvestPrice.ToString();
     }
 
     public void Purchase()
     {
         InventoryManager.Instance.PurchaseItem(crop);
+    }
+
+    public void Sell()
+    {
+        InventoryManager.Instance.SellItem(crop);
     }
 }
