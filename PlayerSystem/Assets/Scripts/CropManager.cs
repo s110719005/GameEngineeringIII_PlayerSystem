@@ -37,7 +37,14 @@ public class CropManager : MonoBehaviour
             CropSpot cropSpot = cropSpots[i];
             if(cropSpot.isPlant && !cropSpot.canHarvest)
             {
-                cropSpot.currentLifeTime += Time.deltaTime;
+                if(cropSpot.isWater)
+                {
+                    cropSpot.currentLifeTime += Time.deltaTime;
+                }
+                else
+                {
+                    cropSpot.currentLifeTime += Time.deltaTime / 10;
+                }
                 if(cropSpot.currentLifeTime >= cropSpot.cropType.growingTime)
                 {
                     cropSpot.currentStatus += 1;
@@ -51,6 +58,15 @@ public class CropManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public bool IsPlanting()
+    {
+        if(cropSpotsDict.TryGetValue(PlayerStateManager.Instance.CurrenSelection, out CropSpot cropSpot))
+        {
+            if(cropSpot.isPlant) { return true; }
+        }
+        return false;
     }
 
     public void AddCropSpot()
@@ -82,6 +98,9 @@ public class CropManager : MonoBehaviour
             InventoryManager.Instance.AddItem(harvest);
             cropTilemap.SetTileFlags(cropSpot.grid, TileFlags.None);
             cropTilemap.SetTile(cropSpot.grid, null);
+            farmGroundTilemap.SetTileFlags(cropSpot.grid, TileFlags.None);
+            farmGroundTilemap.SetColor(cropSpot.grid, Color.white);
+
             cropSpots.Remove(cropSpot);
             cropSpotsDict.Remove(currentSelection);
         }
@@ -93,6 +112,7 @@ public class CropManager : MonoBehaviour
         Debug.Log("Try plant");
         if(cropSpotsDict.TryGetValue(currentSelection, out CropSpot cropSpot))
         {
+            if(cropSpot.isPlant) { return false; }
             cropSpot.isPlant = true;
             cropSpot.cropType = cropType;
             cropTilemap.SetTileFlags(cropSpot.grid, TileFlags.None);
@@ -106,6 +126,15 @@ public class CropManager : MonoBehaviour
         // }
         return false;
     }
+
+    public void Water()
+    {
+        Vector3Int currentSelection = PlayerStateManager.Instance.CurrenSelection;
+        if(cropSpotsDict.TryGetValue(currentSelection, out CropSpot cropSpot))
+        {
+            cropSpot.isWater = true;
+        }
+    }
 }
 
 [System.Serializable]
@@ -115,6 +144,7 @@ public class CropSpot
     public CropType cropType;
     public int currentStatus;
     public bool isPlant;
+    public bool isWater;
     public bool canHarvest;
     public float currentLifeTime;
 }

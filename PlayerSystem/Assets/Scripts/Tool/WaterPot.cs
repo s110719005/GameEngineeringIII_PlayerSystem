@@ -14,7 +14,9 @@ public class WaterPot : ToolBase
     
     public override void Execute() 
     {
+        if(!CropManager.Instance.IsPlanting()) { return; }
         SetTileColor(farmGroundTile, waterColor);
+        CropManager.Instance.Water();
     }
 
     

@@ -13,6 +13,7 @@ public class Shovel : ToolBase
     private TileBase holeTileBase;
     public override void Execute() 
     {
+        if(CropManager.Instance.IsPlanting()) { return; }
         if(SetTileSprite(farmGroundTilemap, cropTilemap, holeTileBase))
         {
             CropManager.Instance.AddCropSpot();

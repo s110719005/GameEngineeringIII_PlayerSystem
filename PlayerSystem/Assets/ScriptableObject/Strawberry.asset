@@ -14,13 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cropName: Strawberry
   seedSprite: {fileID: -1445485956, guid: 74cdfa1949faab940b36287b1a111a91, type: 3}
-  growingSprites:
-  - {fileID: 1049906300, guid: 74cdfa1949faab940b36287b1a111a91, type: 3}
-  - {fileID: -1356809063, guid: 74cdfa1949faab940b36287b1a111a91, type: 3}
-  - {fileID: -1698412176, guid: 74cdfa1949faab940b36287b1a111a91, type: 3}
-  - {fileID: -946367809, guid: 74cdfa1949faab940b36287b1a111a91, type: 3}
-  - {fileID: -69880074, guid: 74cdfa1949faab940b36287b1a111a91, type: 3}
-  - {fileID: -1122007738, guid: 74cdfa1949faab940b36287b1a111a91, type: 3}
   growingTileBases:
   - {fileID: 11400000, guid: a2060371901adc94f9b3058ce5ca36ad, type: 2}
   - {fileID: 11400000, guid: b70e8e2c81b5c5141b51b3afedb43a19, type: 2}
@@ -30,6 +23,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 534583b5de8017e4bb321c29b8989355, type: 2}
   harvestSprite: {fileID: -253525522, guid: 74cdfa1949faab940b36287b1a111a91, type: 3}
   shopSprite: {fileID: 241605365, guid: 74cdfa1949faab940b36287b1a111a91, type: 3}
-  growingTime: 1
+  growingTime: 30
   seedPrice: 30
   harvestPrice: 100
+  unlockPrice: 300
