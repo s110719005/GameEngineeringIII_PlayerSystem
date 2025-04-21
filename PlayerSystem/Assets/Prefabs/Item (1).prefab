@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultSprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  backgroundImage: {fileID: 6084036338189425688}
   itemImage: {fileID: 8964761677634150013}
   itemCountText: {fileID: 9143467566808846645}
 --- !u!1 &4854366104757745700

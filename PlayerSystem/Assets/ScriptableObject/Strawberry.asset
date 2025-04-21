@@ -21,8 +21,15 @@ MonoBehaviour:
   - {fileID: -946367809, guid: 74cdfa1949faab940b36287b1a111a91, type: 3}
   - {fileID: -69880074, guid: 74cdfa1949faab940b36287b1a111a91, type: 3}
   - {fileID: -1122007738, guid: 74cdfa1949faab940b36287b1a111a91, type: 3}
+  growingTileBases:
+  - {fileID: 11400000, guid: a2060371901adc94f9b3058ce5ca36ad, type: 2}
+  - {fileID: 11400000, guid: b70e8e2c81b5c5141b51b3afedb43a19, type: 2}
+  - {fileID: 11400000, guid: 04d37937d01470a45ad64334e5c15f0e, type: 2}
+  - {fileID: 11400000, guid: 9501fa72fe10fd14ba1b1b64e0374b9b, type: 2}
+  - {fileID: 11400000, guid: edcf9f00a0a69f243b42274b7ac9ab25, type: 2}
+  - {fileID: 11400000, guid: 534583b5de8017e4bb321c29b8989355, type: 2}
   harvestSprite: {fileID: -253525522, guid: 74cdfa1949faab940b36287b1a111a91, type: 3}
   shopSprite: {fileID: 241605365, guid: 74cdfa1949faab940b36287b1a111a91, type: 3}
-  growingTime: 25
+  growingTime: 1
   seedPrice: 30
   harvestPrice: 100
